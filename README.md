@@ -1,54 +1,46 @@
-# React + TypeScript + Vite
+# Vacation Management App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a vacation management web application that allows users to apply for and manage vacation requests. Admins can approve, deny, and track vacation statuses.
 
-Currently, two official plugins are available:
+## Features
+- User authentication (login/logout)
+- Admin Dashboard to manage vacation requests
+- Pagination for vacation request tables
+- Status update for vacation requests (Pending, Approved, Denied)
+- Calendar view to highlight approved vacation days
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Technologies Used
+- **React** for the frontend
+- **React Router** for navigation
+- **Local Storage** for storing user data and vacation requests
+- **TailwindCSS** for styling
+- **React-Calendar** for calendar view and date picking
 
-## Expanding the ESLint configuration
+## Setup Instructions
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/vacation-management-app.git
+   
+2. Navigate to the project directory:
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+- cd vacation-management-app
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+3. Install the dependencies:
+   
+- npm install
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+4. Start the development server:
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+- npm start
+  
+5. Open your browser and go to http://localhost:3000 to see the app in action.
+
+## Usage
+Login: Use the login form to authenticate. User data is stored in the local storage.
+
+Request Vacation: From the dashboard, click on the "Request Vacation" button. You can pick start and end dates, and add optional notes.
+
+Manage Requests: Admins can view vacation requests, approve/deny them, and track the statuses.
+
+Calendar View: Vacation days that are approved will be highlighted on the calendar.
