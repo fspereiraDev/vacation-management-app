@@ -1,11 +1,10 @@
 
-import { useEffect, useState } from "react"
-import { User } from "../../types"
+import { useEffect, useState } from 'react'
+import { User } from '../../types'
 
 const Summary = () => {
 	const [user, setUser] = useState<User | null>(null)
 
-	// Read user data from localStorage when the component mounts
 	useEffect(() => {
 	  const storedUser = localStorage.getItem("User")
 	  if (storedUser) {

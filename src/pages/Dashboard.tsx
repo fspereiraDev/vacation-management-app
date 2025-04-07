@@ -4,7 +4,7 @@ import SideBar from '../components/Dashboard/SideBar'
 import Navbar from '../components/Dashboard/Navbar'
 import { useEffect } from 'react'
 
-const AdminDashboard = () => {
+const Dashboard = () => {
 	const {user} = useAuth()
 	const navigate = useNavigate()
 	
@@ -25,4 +25,4 @@ const AdminDashboard = () => {
 	)
 }
 
-export default AdminDashboard
+export default Dashboard

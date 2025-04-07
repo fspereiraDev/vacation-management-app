@@ -33,3 +33,10 @@ export type ModalProps = {
 	onClose: () => void
 	children: React.ReactNode
 }
+
+export interface VacationFormProps {
+  addVacationRequest: (r: VacationRequest) => void;
+  selectedDate: Date; // Add the selectedDate prop here
+  onClose: () => void;
+  onSubmit: (r: VacationRequest) => void;
+}

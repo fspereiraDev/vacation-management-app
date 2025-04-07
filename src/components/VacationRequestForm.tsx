@@ -1,7 +1,8 @@
-import { useState } from 'react'
-import { VacationRequest } from '../types';
+// VacationRequestForm.tsx
+import { useState } from 'react';
+import { VacationRequest, VacationFormProps } from '../types'; // Adjust the import patch as necessary
 
-const VacationRequestForm = ({ addVacationRequest }: { addVacationRequest: (r: VacationRequest) => void }) => {
+const VacationRequestForm: React.FC<VacationFormProps> = ({ addVacationRequest, onClose }) => {
   const [startDate, setStartDate] = useState('')
   const [endDate, setEndDate] = useState('')
   const [note, setNote] = useState('')
@@ -11,9 +12,9 @@ const VacationRequestForm = ({ addVacationRequest }: { addVacationRequest: (r: V
   const getNextId = () => {
     const stored = localStorage.getItem('vacations')
     const parsed = stored ? JSON.parse(stored) : []
-    if (parsed.length === 0) return 1
-    const newId = Number((parsed[parsed.length - 1].id)) + 1
-    return newId.toString()
+    if (parsed.length === 0) return '1'
+    const newId = (Number(parsed[parsed.length - 1].id) + 1).toString()
+    return newId
   }
 
   const handleVacationRequest = () => {
@@ -24,13 +25,16 @@ const VacationRequestForm = ({ addVacationRequest }: { addVacationRequest: (r: V
 
     setError('')
 
-    const newRequest = {
+    const newRequest: VacationRequest = {
       id: getNextId(),
       userId: user.id,
       startDate,
       endDate,
       note,
       status: 'pending',
+      employeeName: user.name,
+      requestedBy: user.name,
+      approvedDate: '',
     };
 
     const stored = localStorage.getItem('vacations')
@@ -43,7 +47,8 @@ const VacationRequestForm = ({ addVacationRequest }: { addVacationRequest: (r: V
     setStartDate('')
     setEndDate('')
     setNote('')
-  };
+    onClose()
+  }
 
   return (
     <div className="mt-8 bg-white p-6 max-w-4xl mx-auto">

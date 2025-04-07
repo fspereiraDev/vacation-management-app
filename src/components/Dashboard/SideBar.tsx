@@ -1,6 +1,6 @@
-import { FaCog, FaSignOutAlt, FaTachometerAlt, FaUser, FaUsers } from "react-icons/fa"
-import { NavLink } from "react-router-dom"
-import useAuth  from "../../hooks/useAuth"
+import { FaCog, FaSignOutAlt, FaTachometerAlt, FaUser, FaUsers } from 'react-icons/fa'
+import { NavLink } from 'react-router-dom'
+import useAuth  from '../../hooks/useAuth'
 
 const SideBar = () => {
 	const { logout } = useAuth()

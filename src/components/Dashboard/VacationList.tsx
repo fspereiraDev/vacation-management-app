@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
-import { User, VacationRequest } from "../../types";
+import { useEffect, useState } from 'react'
+import { User, VacationRequest } from '../../types'
 
 const VacationRequests = ({ vacationRequests }: { vacationRequests: VacationRequest[] }) => {
 
-    const [currentUser, setCurrentUser] = useState<User | null>(null);
+    const [currentUser, setCurrentUser] = useState<User | null>(null)
   
     useEffect(() => {
       // Get users and vacation requests from localStorage

@@ -1,6 +1,6 @@
 import { Routes, Route, Navigate } from 'react-router-dom'
 import Login from './pages/LoginPage'
-import AdminDashboard from './pages/Dashboard'
+import Dashboard from './pages/Dashboard'
 import Summary from './components/Dashboard/Summary'
 import ProfilePage from './components/Profile/Profile'
 import UserList from './components/Team/UserList'
@@ -29,7 +29,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Navigate to="/admin-dashboard"/>}></Route>
         <Route path="/login" element={<Login />}></Route>
-        <Route path="/admin-dashboard" element={<AdminDashboard />}>
+        <Route path="/admin-dashboard" element={<Dashboard />}>
           <Route index element={<Summary />}></Route>
           <Route path="/admin-dashboard/profile" element={<ProfilePage/>}></Route>
           <Route path="/admin-dashboard/team" element={<UserList/>}></Route>

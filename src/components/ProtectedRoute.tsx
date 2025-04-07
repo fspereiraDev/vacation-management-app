@@ -5,7 +5,7 @@ const ProtectedRoute = ({ children, allowedRole }: { children: React.ReactNode; 
   const user = storedUser ? JSON.parse(storedUser) : null
 
   if (!user || user.role !== allowedRole) {
-    return <Navigate to="/login" />
+    return <Navigate to='/login' />
   }
 
   return <>{children}</>

@@ -12,21 +12,20 @@ const VacationCalendar = ({
   vacationRequests: VacationRequest[]
   addVacationRequest: (r: VacationRequest) => void
 }) => {
-  const [date, setDate] = useState(new Date())
+  const [date, setDate] = useState<Date>(new Date())
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   const getHighlightDates = (currentMonth: Date) => {
-    const currentMonthStart = new Date(currentMonth.getFullYear(), currentMonth.getMonth(), 1);
-    const currentMonthEnd = new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1, 0); // Last day of the month
+    const currentMonthStart = new Date(currentMonth.getFullYear(), currentMonth.getMonth(), 1)
+    const currentMonthEnd = new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1, 0)
 
     return vacationRequests
-      .filter((request) => request.status === "approved")
+      .filter((request) => request.status === 'approved')
       .flatMap((request) => {
         const startDate = new Date(request.startDate)
         const endDate = new Date(request.endDate)
         const highlightedDates: Date[] = []
 
-        // Loop through the date range and add dates that fall within the current month
         while (startDate <= endDate) {
           const normalizedStartDate = normalizeDate(startDate)
           if (normalizedStartDate >= currentMonthStart && normalizedStartDate <= currentMonthEnd) {
@@ -40,9 +39,14 @@ const VacationCalendar = ({
   }
 
 	const normalizeDate = (date: Date) => {
-		// Normalize to the start of the day (00:00:00)
 		return new Date(date.getFullYear(), date.getMonth(), date.getDate());
 	}
+
+	const handleDateChange = (newDate: Date | null) => {
+    if (newDate) {
+      setDate(newDate)
+    }
+  }
 
   return (
     <div className="mt-2 max-w-4xl mx-auto">
@@ -52,20 +56,17 @@ const VacationCalendar = ({
         <div className="[&_.react-calendar]:w-full [&_.react-calendar]:border-none [&_.react-calendar]:rounded-xl [&_.react-calendar]:p-2 [&_.react-calendar]:text-sm [&_.react-calendar]:font-medium [&_.react-calendar]:bg-white">
 				<Calendar
             value={date}
-            onChange={setDate}
+            onChange={handleDateChange}
             tileClassName={({ date }) => {
-              // Get the highlight dates based on the current month being viewed
-              const highlightDates = getHighlightDates(date);
-
-              const normalizedDate = normalizeDate(date);
-              // Check if the normalized date is in the list of highlighted vacation days
+              const highlightDates = getHighlightDates(date)
+              const normalizedDate = normalizeDate(date)
               const isHighlighted = highlightDates.some((highlightedDate) => normalizedDate.getTime() === highlightedDate.getTime());
 
               if (isHighlighted) {
-                return "bg-teal-600 text-yellow-600 !important"; // Highlight the vacation days
+                return "bg-teal-600 text-yellow-600 !important"
               }
 
-              return "";
+              return ""
             }}
           />
         </div>
@@ -86,12 +87,12 @@ const VacationCalendar = ({
 						addVacationRequest={addVacationRequest}
             selectedDate={date} 
             onClose={() => setIsModalOpen(false)} 
-            onSubmit={addVacationRequest} // Pass the function to add vacation requests
+            onSubmit={addVacationRequest}
           />
         </Modal>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default VacationCalendar;
+export default VacationCalendar
