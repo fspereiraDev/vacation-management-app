@@ -32,12 +32,16 @@ This is a vacation management web application that allows users to apply for and
 
 4. Start the development server:
 
-- npm start
+- npm run dev
   
 5. Open your browser and go to http://localhost:3000 to see the app in action.
 
 ## Usage
 Login: Use the login form to authenticate. User data is stored in the local storage.
+
+Right now there are 2 users:
+Admin and User
+Their credetials can be checked on the users.json file.
 
 Request Vacation: From the dashboard, click on the "Request Vacation" button. You can pick start and end dates, and add optional notes.
 
